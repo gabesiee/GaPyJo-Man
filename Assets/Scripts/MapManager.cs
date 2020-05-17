@@ -12,7 +12,6 @@ public class MapManager : MonoBehaviour
     [SerializeField] private GameObject wall;           // l'objet mur
     [SerializeField] private GameObject ground;         // l'objet sol
     [SerializeField] private GameObject book;           // l'objet livre
-    [SerializeField] float m_RotationSpeed = 0;         // la vitesse à laquelle le livre tournera sur lui-même
 
     // Start is called before the first frame update
     void Start()
