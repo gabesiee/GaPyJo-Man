@@ -4,7 +4,7 @@ using Unity.UNetWeaver;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class MapManager : MonoBehaviour
+public class MapManager : Manager<MapManager>
 {
     [Header("Map configuration")]
     [SerializeField] private Texture2D[] maps;          // tableau qui contient les différentes maps
@@ -12,15 +12,18 @@ public class MapManager : MonoBehaviour
     [SerializeField] private GameObject wall;           // l'objet mur
     [SerializeField] private GameObject ground;         // l'objet sol
     [SerializeField] private GameObject book;           // l'objet livre
+    private Vector3[,] mapPath;                         // carte représentant le terrain
 
-    // Start is called before the first frame update
-    void Start()
+    private void Awake()
     {
+        base.Awake();
         map = maps[0];                                  // récupération de la map à générer
         Color[] pixels = map.GetPixels();               // extraction des coleurs des pixels dans un tableau
 
         int mapHeight = map.height;
         int mapWidth = map.width;
+        mapPath = new Vector3[mapWidth, mapHeight];
+
 
         Vector3[] spawnPositions = new Vector3[pixels.Length];  // tous les spawnpositions possibles (les pixels)
         Vector3 startingSpawnPosition = new Vector3(-Mathf.Round(mapWidth / 2), 0, -Mathf.Round(mapHeight / 2)); // permet de créer la map autour du point de position de départ
@@ -32,6 +35,9 @@ public class MapManager : MonoBehaviour
         {
             for (int x = 0; x < mapWidth; x++)          // la boucle sur les coordonnées X
             {
+                                                         
+                mapPath[z, x] =                         // Rempmlissage du terrain par la position si le bloc n'est pas un mur
+                    (pixels[counter].Equals(Color.white) ? currentSpawnPosition : new Vector3(-1, -1, -1));
                 spawnPositions[counter] = currentSpawnPosition;     //
                 counter++;                                          //
                 currentSpawnPosition.x++;                           //
@@ -42,12 +48,12 @@ public class MapManager : MonoBehaviour
         }
 
         counter = 0;                                                // reset du compteur
-        
+
         foreach (Vector3 pos in spawnPositions)                     // boucle sur les positions
         {
             Color c = pixels[counter];                              // c prend la valeur de la couleur du pixel exploré
 
-            if (c.Equals(Color.black))                  
+            if (c.Equals(Color.black))
             {
                 Instantiate(wall, pos, Quaternion.identity);        // s'il est noir, ce sera un mur
             }
@@ -64,9 +70,24 @@ public class MapManager : MonoBehaviour
         }
     }
 
+    // Start is called before the first frame update
+    void Start()
+    {
+        
+    }
+
+    public Vector3[,] getMapPath() {
+        return mapPath;
+    }
+
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    protected override IEnumerator InitCoroutine()
+    {
+        yield break;
     }
 }
