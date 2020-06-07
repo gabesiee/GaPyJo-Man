@@ -11,6 +11,7 @@ public class PlayerManager : MonoBehaviour
     [Tooltip("Vitesse de rotation °.s-1")]
     [SerializeField] float m_RotationSpeed = 0;
     [SerializeField] public Transform camera;
+    [SerializeField] Light light;
 
     float yRotation = 0f;
 
@@ -24,13 +25,13 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+                Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
 
     private void FixedUpdate()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+
 
         float vInput = Input.GetAxis("Vertical") * m_TranslationSpeed * Time.fixedDeltaTime;
         float hInput = Input.GetAxis("Horizontal") * m_TranslationSpeed * Time.fixedDeltaTime;
@@ -61,7 +62,11 @@ public class PlayerManager : MonoBehaviour
         // Update is called once per frame
     void Update()
     {
-        
+        if (Input.GetMouseButtonDown(1))
+            if (light.enabled)
+                light.enabled = false;
+            else
+                light.enabled = true;
     }
 
     
