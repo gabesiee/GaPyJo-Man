@@ -42,8 +42,11 @@ public class Ennemy : MonoBehaviour
     bool running = false;
     Rigidbody m_RigidBody;
 
-    private AnimatedImage normalAnimationScript;
+    //Références des scripts d'animation
+    private AnimatedImage normalAnimationScript; 
     private AnimatedImage huntingAnimationScript;
+
+    //Lumiere de la torche
     private Light light;
 
     void Start()
@@ -52,6 +55,7 @@ public class Ennemy : MonoBehaviour
 
         mapPath = MapManager.Instance.getMapPath(); // Récupération du terrain
 
+        // Récupération et initialisation des scripts d'animation
         huntingAnimationScript = GetComponentsInChildren<AnimatedImage>()[0];
         normalAnimationScript = GetComponentsInChildren<AnimatedImage>()[1];
         normalAnimationScript.enabled = true;
@@ -65,6 +69,7 @@ public class Ennemy : MonoBehaviour
 
     /**
      * Choisi la position de l'ennemi dans une zone libre 
+     * NOW : Prend la premiere case disponible
      * TODO : à modifier pour l'ajout de mechants (peut etre prendre les coins???)
      */
     private void getFirstAvailablePos()
@@ -151,20 +156,24 @@ public class Ennemy : MonoBehaviour
      */
     private void getNextHuntingPosition()
     {
+        //1ere vérification Si l'ennemi a rejoint la position marquée on arrete la chasse
         if (!mapPath[pos[0], pos[1]].Equals(huntingposition))
         {
+            //Vecteur entre l'ennemi et la pos marquée
             Vector3 playerVect = huntingposition - transform.position;
+
+            //Calcul des angles entre chaque point cardinal relatif à l'ennemi
 
             //forward and backward
             float[] anglesZ = {
-            Vector3.Angle(playerVect, transform.forward),
-            Vector3.Angle(playerVect, -transform.forward)
-        };
+                Vector3.Angle(playerVect, transform.forward),
+                Vector3.Angle(playerVect, -transform.forward)
+            };
             //right and left
             float[] anglesX = {
-            Vector3.Angle(playerVect, transform.right),
-            Vector3.Angle(playerVect, -transform.right),
-        };
+                Vector3.Angle(playerVect, transform.right),
+                Vector3.Angle(playerVect, -transform.right),
+            };
 
             int valueZ;
             int angleZ;

@@ -12,6 +12,7 @@ public class MapManager : Manager<MapManager>
     private Texture2D map;                              // variable qui va recevoir la map à générer
     [SerializeField] private GameObject wall;           // l'objet mur
     [SerializeField] private GameObject ground;         // l'objet sol
+    [SerializeField] private GameObject ceiling;         // l'objet plafond
     [SerializeField] private GameObject book;           // l'objet livre
     private Vector3[,] mapPath;                         // carte représentant le terrain
 
