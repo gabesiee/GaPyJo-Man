@@ -44,9 +44,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d6cad4db97ae6478c7d35f54a2819c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Field_Of_View: 1000
-  normalAnimationScript: {fileID: 0}
-  huntingAnimationScript: {fileID: 0}
 --- !u!1 &6175247312752785605
 GameObject:
   m_ObjectHideFlags: 0
@@ -90,8 +87,8 @@ Light:
   m_Type: 2
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 8.98
-  m_Range: 8.3
+  m_Intensity: 3.32
+  m_Range: 5.04
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208
   m_CookieSize: 10
