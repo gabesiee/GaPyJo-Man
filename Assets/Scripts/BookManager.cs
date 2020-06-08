@@ -20,7 +20,7 @@ public class BookManager : MonoBehaviour
     {
         if (col.name == "Player")
         {
-            ScoreManager.scoreValue += 10;
+            ScoreManager.bookScore += 1;
             Destroy(this.gameObject);
         }
     }

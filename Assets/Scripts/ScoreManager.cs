@@ -5,7 +5,8 @@ using UnityEngine.UI;
 
 public class ScoreManager : MonoBehaviour
 {
-    public static int scoreValue;
+    public static int booksMax;
+    public static int bookScore;
     private Text scoreText;
 
     // Start is called before the first frame update
@@ -17,7 +18,7 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        scoreText.text = "Score : " + scoreValue;
+        scoreText.text = bookScore + "/" + booksMax;
     }
 
 

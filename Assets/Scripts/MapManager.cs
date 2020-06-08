@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Unity.UNetWeaver;
 using UnityEngine;
+using UnityEngine.SocialPlatforms.Impl;
 using UnityEngine.UI;
 
 public class MapManager : Manager<MapManager>
@@ -48,6 +49,8 @@ public class MapManager : Manager<MapManager>
         }
 
         counter = 0;                                                // reset du compteur
+        ScoreManager.booksMax = 0;                                  // initialisation fdu compteur de livre
+
 
         foreach (Vector3 pos in spawnPositions)                     // boucle sur les positions
         {
@@ -63,7 +66,7 @@ public class MapManager : Manager<MapManager>
                 Vector3 bookPos = pos;
                 bookPos.y = 0.8f;
                 Instantiate(book, bookPos, Quaternion.identity);
-
+                ScoreManager.booksMax++;
             }
 
             counter++;
