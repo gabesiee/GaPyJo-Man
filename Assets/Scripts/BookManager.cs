@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using SDD.Events;
 
 public class BookManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class BookManager : MonoBehaviour
     {
         if (col.name == "Player")
         {
-            ScoreManager.bookScore += 1;
+            EventManager.Instance.Raise(new ScoreItemEvent());
             Destroy(this.gameObject);
         }
     }

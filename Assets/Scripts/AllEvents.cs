@@ -47,6 +47,9 @@ public class MainMenuButtonClickedEvent : SDD.Events.Event
 
 public class QuitButtonClickedEvent : SDD.Events.Event
 { }
+
+public class PlayerHasBeenHitEvent : SDD.Events.Event
+{ }
 #endregion
 
 #region Score Event

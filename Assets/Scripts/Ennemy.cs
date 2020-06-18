@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using SDD.Events;
 
 public class Ennemy : MonoBehaviour
 {
@@ -389,6 +390,12 @@ public class Ennemy : MonoBehaviour
         }
     }
 
-
+    void OnTriggerEnter(Collider col)
+    {
+        if (col.name == "Player")
+        {
+            EventManager.Instance.Raise(new PlayerHasBeenHitEvent());
+        }
+    }
 
 }

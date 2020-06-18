@@ -25,8 +25,7 @@ public class PlayerManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-                Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        
     }
 
     private void FixedUpdate()
@@ -59,7 +58,7 @@ public class PlayerManager : MonoBehaviour
 
     }
 
-        // Update is called once per frame
+    // Update is called once per frame
     void Update()
     {
         if (Input.GetMouseButtonDown(1))
@@ -69,5 +68,5 @@ public class PlayerManager : MonoBehaviour
                 light.enabled = true;
     }
 
-    
+
 }
