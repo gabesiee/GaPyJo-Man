@@ -133,6 +133,7 @@ GameObject:
   - component: {fileID: 64105166}
   - component: {fileID: 64105165}
   - component: {fileID: 64105164}
+  - component: {fileID: 64105167}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -251,6 +252,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 64105162}
   m_CullTransparentMesh: 0
+--- !u!114 &64105167
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 64105162}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &165174608
 GameObject:
   m_ObjectHideFlags: 0
@@ -263,6 +292,7 @@ GameObject:
   - component: {fileID: 165174612}
   - component: {fileID: 165174611}
   - component: {fileID: 165174610}
+  - component: {fileID: 165174613}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -381,6 +411,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 165174608}
   m_CullTransparentMesh: 0
+--- !u!114 &165174613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 165174608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &181721867
 GameObject:
   m_ObjectHideFlags: 0
@@ -633,6 +691,7 @@ GameObject:
   - component: {fileID: 232009580}
   - component: {fileID: 232009579}
   - component: {fileID: 232009578}
+  - component: {fileID: 232009581}
   m_Layer: 5
   m_Name: ResumeButton
   m_TagString: Untagged
@@ -751,6 +810,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 232009576}
   m_CullTransparentMesh: 0
+--- !u!114 &232009581
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 232009576}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &274504909
 GameObject:
   m_ObjectHideFlags: 0
@@ -1059,6 +1146,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 568856503}
   m_CullTransparentMesh: 0
+--- !u!114 &637821860 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 114331011742233390, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 955461318}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc322b5b21cc9e94a8fb2486933498d8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &771777539
 GameObject:
   m_ObjectHideFlags: 0
@@ -1646,6 +1745,11 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 82829165443289398, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
+        type: 3}
+      propertyPath: m_Volume
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 114029691621530082, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
         type: 3}
       propertyPath: HUDPanel
@@ -1719,26 +1823,51 @@ PrefabInstance:
       propertyPath: m_ResourcesFolderName
       value: Audio/SFX
       objectReference: {fileID: 0}
+    - target: {fileID: 114331011742233390, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
+        type: 3}
+      propertyPath: m_NAudioSources
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114331011742233390, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
+        type: 3}
+      propertyPath: m_ShowGui
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 114746243097493696, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
         type: 3}
       propertyPath: m_Clips.Array.size
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 114746243097493696, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
         type: 3}
       propertyPath: m_Clips.Array.data[0]
       value: 
-      objectReference: {fileID: 8300000, guid: 52aa2a246fbbccb418de9e46ed767a4c, type: 3}
+      objectReference: {fileID: 8300000, guid: 2a3f6e6249f329846a008c9982bb83ec, type: 3}
     - target: {fileID: 114746243097493696, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
         type: 3}
       propertyPath: m_Clips.Array.data[1]
       value: 
-      objectReference: {fileID: 8300000, guid: 18fc0e399ffc63641b8c4cb50030cd6c, type: 3}
+      objectReference: {fileID: 8300000, guid: 52aa2a246fbbccb418de9e46ed767a4c, type: 3}
     - target: {fileID: 114746243097493696, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
         type: 3}
       propertyPath: m_FadeDuration
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 114746243097493696, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
+        type: 3}
+      propertyPath: m_Clips.Array.data[2]
+      value: 
+      objectReference: {fileID: 8300000, guid: dacae158876df084694f4df8b675ed90, type: 3}
+    - target: {fileID: 114746243097493696, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
+        type: 3}
+      propertyPath: m_Clips.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: e52bb8a4e953dbb4798464fefd84dc26, type: 3}
+    - target: {fileID: 114746243097493696, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
+        type: 3}
+      propertyPath: m_Clips.Array.data[4]
+      value: 
+      objectReference: {fileID: 8300000, guid: e52bb8a4e953dbb4798464fefd84dc26, type: 3}
     - target: {fileID: 4843552574218583107, guid: 68480a01e4a00ab45b3d746ae2fc86ee,
         type: 3}
       propertyPath: m_IsActive
@@ -2255,6 +2384,7 @@ GameObject:
   - component: {fileID: 1525884425}
   - component: {fileID: 1525884424}
   - component: {fileID: 1525884423}
+  - component: {fileID: 1525884426}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2373,6 +2503,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1525884421}
   m_CullTransparentMesh: 0
+--- !u!114 &1525884426
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525884421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1540581568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2753,6 +2911,7 @@ GameObject:
   - component: {fileID: 1756209887}
   - component: {fileID: 1756209886}
   - component: {fileID: 1756209885}
+  - component: {fileID: 1756209888}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -2871,6 +3030,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1756209883}
   m_CullTransparentMesh: 0
+--- !u!114 &1756209888
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1756209883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &1786678065
 GameObject:
   m_ObjectHideFlags: 0
@@ -3035,6 +3222,7 @@ GameObject:
   - component: {fileID: 1943350034}
   - component: {fileID: 1943350033}
   - component: {fileID: 1943350032}
+  - component: {fileID: 1943350035}
   m_Layer: 5
   m_Name: MenuButton
   m_TagString: Untagged
@@ -3153,6 +3341,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1943350030}
   m_CullTransparentMesh: 0
+--- !u!114 &1943350035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1943350030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2021978936
 GameObject:
   m_ObjectHideFlags: 0
@@ -3165,6 +3381,7 @@ GameObject:
   - component: {fileID: 2021978940}
   - component: {fileID: 2021978939}
   - component: {fileID: 2021978938}
+  - component: {fileID: 2021978941}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -3283,6 +3500,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2021978936}
   m_CullTransparentMesh: 0
+--- !u!114 &2021978941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2021978936}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2098328224
 GameObject:
   m_ObjectHideFlags: 0
@@ -3295,6 +3540,7 @@ GameObject:
   - component: {fileID: 2098328228}
   - component: {fileID: 2098328227}
   - component: {fileID: 2098328226}
+  - component: {fileID: 2098328229}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -3413,6 +3659,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098328224}
   m_CullTransparentMesh: 0
+--- !u!114 &2098328229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098328224}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 0
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 637821860}
+          m_MethodName: PlaySfx2D
+          m_Mode: 5
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: Button
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2138896949
 GameObject:
   m_ObjectHideFlags: 0
