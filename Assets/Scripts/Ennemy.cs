@@ -134,16 +134,10 @@ public class Ennemy : MonoBehaviour
 
         if (!hunting)
         {
-            light.color = Color.white;
             getNextRandomPosition();
-            huntingAnimationScript.enabled = true;
-            normalAnimationScript.enabled = false;
         }
         else
         {
-            light.color = Color.red;
-            huntingAnimationScript.enabled = false;
-            normalAnimationScript.enabled = true;
             getNextHuntingPosition();
         }
 
@@ -238,7 +232,7 @@ public class Ennemy : MonoBehaviour
         }
         else
         {
-            hunting = false;
+            endHunt();
         }
     }
 
@@ -382,12 +376,40 @@ public class Ennemy : MonoBehaviour
         // Check si le joeur est visible par l'ennemi (à 360deg)
         if (!Physics.Raycast(position, direction, out hit, distance, wallsMask))
         {
+            if (!hunting)
+            {
+                startHunt();
+            }
 
             huntingposition = player.position;
             huntingposition = getNearestHuntingPosition();
             hunting = true;
 
         }
+    }
+
+    private void endHunt()
+    {
+        light.color = Color.white;
+        huntingAnimationScript.enabled = true;
+        normalAnimationScript.enabled = false;
+        hunting = false;
+        GameMusicEvent e = new GameMusicEvent();
+        e.type = 0;
+        EventManager.Instance.Raise(e);
+        //send Back to normal music
+    }
+
+    private void startHunt()
+    {
+        light.color = Color.red;
+        huntingAnimationScript.enabled = false;
+        normalAnimationScript.enabled = true;
+        hunting = true;
+        GameMusicEvent e = new GameMusicEvent();
+        e.type = 1;
+        EventManager.Instance.Raise(e);
+        //send Hunt music
     }
 
     void OnTriggerEnter(Collider col)

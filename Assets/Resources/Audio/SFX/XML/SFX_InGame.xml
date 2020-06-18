@@ -5,4 +5,6 @@
 	<SFX name="Tick" volume="1" />  
 	<SFX name="Victory" volume="1" /> 
 	<SFX name="GameOver" volume="1" /> 
+	<SFX name="Score" volume="1" /> 
+	<SFX name="Scream" volume="1" /> 
 </SFX_SETUP>

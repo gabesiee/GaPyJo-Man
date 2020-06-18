@@ -46,8 +46,8 @@ public class GameManager : Manager<GameManager>
 
 	#region Score
 	private float m_Score;
-	public float Score
-	{
+    public float Score
+    {
 		get { return m_Score; }
 		set
 		{
@@ -55,6 +55,8 @@ public class GameManager : Manager<GameManager>
 			BestScore = Mathf.Max(BestScore, value);
 		}
 	}
+
+
 
 	public float BestScore
 	{
@@ -70,8 +72,9 @@ public class GameManager : Manager<GameManager>
 	void SetScore(float score, bool raiseEvent = true)
 	{
 		Score = score;
+        if (SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.SCORE_SFX);
 
-		if (raiseEvent)
+        if (raiseEvent)
 			EventManager.Instance.Raise(new GameStatisticsChangedEvent() { eBestScore = BestScore, eScore = m_Score, eNLives = m_NLives });
 	}
 	#endregion
@@ -102,6 +105,11 @@ public class GameManager : Manager<GameManager>
 
 		//Score Item
 		EventManager.Instance.AddListener<ScoreItemEvent>(ScoreHasBeenGained);
+
+
+		EventManager.Instance.AddListener<GameMusicEvent>(toggleMusic);
+
+
 	}
 
 	public override void UnsubscribeEvents()
@@ -119,6 +127,9 @@ public class GameManager : Manager<GameManager>
 
 		//Score Item
 		EventManager.Instance.RemoveListener<ScoreItemEvent>(ScoreHasBeenGained);
+
+
+		EventManager.Instance.RemoveListener<GameMusicEvent>(toggleMusic);
 	}
 	#endregion
 
@@ -169,7 +180,8 @@ public class GameManager : Manager<GameManager>
 
 	private void PlayButtonClicked(PlayButtonClickedEvent e)
 	{
-		Play();
+        if (SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.BUTTON_SFX);
+        Play();
 	}
 
 	private void ResumeButtonClicked(ResumeButtonClickedEvent e)
@@ -219,8 +231,8 @@ public class GameManager : Manager<GameManager>
 
 		SetTimeScale(0);
 		m_GameState = GameState.gamePause;
-
-		Cursor.lockState = CursorLockMode.Confined;
+        if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.StopAllRightAway();
+        Cursor.lockState = CursorLockMode.Confined;
 		Cursor.visible = true;
 
 
@@ -233,8 +245,8 @@ public class GameManager : Manager<GameManager>
 
 		SetTimeScale(1);
 		m_GameState = GameState.gamePlay;
-
-		Cursor.lockState = CursorLockMode.Locked;
+        if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayCurrentMusic();
+       Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 
 		EventManager.Instance.Raise(new GameResumeEvent());
@@ -252,7 +264,8 @@ public class GameManager : Manager<GameManager>
 		Cursor.visible = true;
 
 		EventManager.Instance.Raise(new GameOverEvent());
-		if(SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.GAMEOVER_SFX);
+        if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.GAMEPLAY_GAMEOVER);
+        if (SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.GAMEOVER_SFX);
 	}
 
 	private void Victory()
@@ -267,8 +280,34 @@ public class GameManager : Manager<GameManager>
 		Cursor.visible = true;
 
 		EventManager.Instance.Raise(new GameVictoryEvent());
-		if (SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.VICTORY_SFX);
+        if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.GAMEPLAY_VICTORY);
+        if (SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.VICTORY_SFX);
 	}
-	#endregion
+
+    private int musicState = 0;
+    private void toggleMusic(GameMusicEvent e)
+    {
+        if (e.type == 0 && musicState >= 1)
+        {
+            musicState--;
+        }
+        else if (e.type == 1)
+        {
+            if (SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.SCREAM_SFX);
+            musicState++;
+        }
+
+        if (musicState == 1)
+        {
+            if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.GAMEPLAY_HUNT);
+        }
+        if (musicState == 0)
+        {
+            if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.GAMEPLAY_MUSIC);
+        }
+
+    }
+
+    #endregion
 }
 

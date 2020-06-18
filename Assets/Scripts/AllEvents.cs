@@ -23,6 +23,11 @@ public class GameVictoryEvent : SDD.Events.Event
 {
 }
 
+public class GameMusicEvent : SDD.Events.Event
+{
+    public int type;
+}
+
 public class GameStatisticsChangedEvent : SDD.Events.Event
 {
 	public float eBestScore { get; set; }

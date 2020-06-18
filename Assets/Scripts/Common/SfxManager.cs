@@ -81,7 +81,7 @@ public class SfxManager : Singleton<SfxManager> {
 
 	public void PlaySfx2D(string sfxName)
 	{
-		PlaySfx3D(sfxName, Camera.main.transform.position);
+		PlaySfx3D(sfxName, GameObject.Find("CameraPlayer").GetComponent<Camera>().transform.position);
 	}
 
 	void PlaySfx(string sfxName, Vector3 pos)
