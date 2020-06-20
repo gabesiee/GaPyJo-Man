@@ -21,6 +21,7 @@ public class GameManager : Manager<GameManager>
 	public GameObject pausePanel;
 	public GameObject VictoryPanel;
 	public GameObject gameOverPanel;
+	public GameObject creditsPanel;
 	public Text scoreText;
 
 	//LIVES
@@ -102,6 +103,7 @@ public class GameManager : Manager<GameManager>
 		EventManager.Instance.AddListener<ResumeButtonClickedEvent>(ResumeButtonClicked);
 		EventManager.Instance.AddListener<EscapeButtonClickedEvent>(EscapeButtonClicked);
 		EventManager.Instance.AddListener<QuitButtonClickedEvent>(QuitButtonClicked);
+		EventManager.Instance.AddListener<CreditButtonClickedEvent>(CreditButtonClicked);
 
 		//Score Item
 		EventManager.Instance.AddListener<ScoreItemEvent>(ScoreHasBeenGained);
@@ -124,6 +126,7 @@ public class GameManager : Manager<GameManager>
 		EventManager.Instance.RemoveListener<ResumeButtonClickedEvent>(ResumeButtonClicked);
 		EventManager.Instance.RemoveListener<EscapeButtonClickedEvent>(EscapeButtonClicked);
 		EventManager.Instance.RemoveListener<QuitButtonClickedEvent>(QuitButtonClicked);
+		EventManager.Instance.RemoveListener<CreditButtonClickedEvent>(CreditButtonClicked);
 
 		//Score Item
 		EventManager.Instance.RemoveListener<ScoreItemEvent>(ScoreHasBeenGained);
@@ -197,6 +200,11 @@ public class GameManager : Manager<GameManager>
 	private void QuitButtonClicked(QuitButtonClickedEvent e)
 	{
 		Application.Quit();
+	}
+
+	private void CreditButtonClicked(CreditButtonClickedEvent e)
+	{
+		
 	}
 	#endregion
 
@@ -305,6 +313,11 @@ public class GameManager : Manager<GameManager>
         {
             if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.GAMEPLAY_MUSIC);
         }
+
+    }
+
+	private void credit()
+    {
 
     }
 

@@ -15,6 +15,7 @@ public class MenuManager : Manager<MenuManager>
 	[SerializeField] GameObject m_PanelInGameMenu;
 	[SerializeField] GameObject m_PanelGameOver;
 	[SerializeField] GameObject m_PanelVictory;
+	[SerializeField] GameObject m_PanelCredits;
 
 	List<GameObject> m_AllPanels;
 	#endregion
