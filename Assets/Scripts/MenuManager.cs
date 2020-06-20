@@ -98,6 +98,11 @@ public class MenuManager : Manager<MenuManager>
 		EventManager.Instance.Raise(new QuitButtonClickedEvent());
 	}
 
+	public void CreditsButtonHasBeenClicked()
+	{
+		EventManager.Instance.Raise(new CreditsButtonClickedEvent());
+	}
+
 	#endregion
 
 	#region Callbacks to GameManager events

@@ -56,7 +56,7 @@ public class QuitButtonClickedEvent : SDD.Events.Event
 public class PlayerHasBeenHitEvent : SDD.Events.Event
 { }
 
-public class CreditButtonClickedEvent : SDD.Events.Event
+public class CreditsButtonClickedEvent : SDD.Events.Event
 { }
 #endregion
 

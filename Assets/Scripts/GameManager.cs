@@ -103,7 +103,7 @@ public class GameManager : Manager<GameManager>
 		EventManager.Instance.AddListener<ResumeButtonClickedEvent>(ResumeButtonClicked);
 		EventManager.Instance.AddListener<EscapeButtonClickedEvent>(EscapeButtonClicked);
 		EventManager.Instance.AddListener<QuitButtonClickedEvent>(QuitButtonClicked);
-		EventManager.Instance.AddListener<CreditButtonClickedEvent>(CreditButtonClicked);
+		EventManager.Instance.AddListener<CreditsButtonClickedEvent>(CreditsButtonClicked);
 
 		//Score Item
 		EventManager.Instance.AddListener<ScoreItemEvent>(ScoreHasBeenGained);
@@ -126,7 +126,7 @@ public class GameManager : Manager<GameManager>
 		EventManager.Instance.RemoveListener<ResumeButtonClickedEvent>(ResumeButtonClicked);
 		EventManager.Instance.RemoveListener<EscapeButtonClickedEvent>(EscapeButtonClicked);
 		EventManager.Instance.RemoveListener<QuitButtonClickedEvent>(QuitButtonClicked);
-		EventManager.Instance.RemoveListener<CreditButtonClickedEvent>(CreditButtonClicked);
+		EventManager.Instance.RemoveListener<CreditsButtonClickedEvent>(CreditsButtonClicked);
 
 		//Score Item
 		EventManager.Instance.RemoveListener<ScoreItemEvent>(ScoreHasBeenGained);
@@ -202,9 +202,9 @@ public class GameManager : Manager<GameManager>
 		Application.Quit();
 	}
 
-	private void CreditButtonClicked(CreditButtonClickedEvent e)
+	private void CreditsButtonClicked(CreditsButtonClickedEvent e)
 	{
-		
+		credit();
 	}
 	#endregion
 
@@ -318,8 +318,15 @@ public class GameManager : Manager<GameManager>
 
 	private void credit()
     {
+		SetTimeScale(0);
+		m_GameState = GameState.gameMenu;
 
-    }
+		creditsPanel.SetActive(true);
+		mainMenuPanel.SetActive(false);
+
+		if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.MENU_MUSIC);
+		EventManager.Instance.Raise(new GameMenuEvent());
+	}
 
     #endregion
 }
