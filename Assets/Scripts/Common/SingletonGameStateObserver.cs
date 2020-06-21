@@ -1,8 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 using SDD.Events;
-using System;
+
 
 public abstract class SingletonGameStateObserver<T> :  Singleton<T>,IEventHandler where T:Component
 {
@@ -14,7 +13,6 @@ public abstract class SingletonGameStateObserver<T> :  Singleton<T>,IEventHandle
 		EventManager.Instance.AddListener<GameResumeEvent>(GameResume);
 		EventManager.Instance.AddListener<GameOverEvent>(GameOver);
 		EventManager.Instance.AddListener<GameVictoryEvent>(GameVictory);
-		EventManager.Instance.AddListener<GameStatisticsChangedEvent>(GameStatisticsChanged);
 		EventManager.Instance.AddListener<GameCreditEvent>(GameCredit);
 	}
 
@@ -28,7 +26,6 @@ public abstract class SingletonGameStateObserver<T> :  Singleton<T>,IEventHandle
 		EventManager.Instance.RemoveListener<GameResumeEvent>(GameResume);
 		EventManager.Instance.RemoveListener<GameOverEvent>(GameOver);
 		EventManager.Instance.RemoveListener<GameVictoryEvent>(GameVictory);
-		EventManager.Instance.RemoveListener<GameStatisticsChangedEvent>(GameStatisticsChanged);
         EventManager.Instance.RemoveListener<GameCreditEvent>(GameCredit);
     }
 
@@ -64,10 +61,6 @@ public abstract class SingletonGameStateObserver<T> :  Singleton<T>,IEventHandle
 	}
 
 	protected virtual void GameVictory(GameVictoryEvent e)
-	{
-	}
-
-	protected virtual void GameStatisticsChanged(GameStatisticsChangedEvent e)
 	{
 	}
     protected virtual void GameCredit(GameCreditEvent e)

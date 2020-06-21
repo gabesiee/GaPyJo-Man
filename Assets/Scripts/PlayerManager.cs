@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿
 using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
@@ -61,11 +60,15 @@ public class PlayerManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(1))
+        if (Input.GetMouseButtonDown(1) || Input.GetKeyDown("joystick button 2"))
+        {
             if (light.enabled)
                 light.enabled = false;
             else
                 light.enabled = true;
+
+        }
+
     }
 
 

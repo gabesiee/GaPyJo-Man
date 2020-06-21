@@ -1,10 +1,7 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
-using System.Collections.Generic;
 using SDD.Events;
-using System.Linq;
 using UnityEngine.SceneManagement;
 
 public enum GameState { gameMenu, gamePlay, gameNextLevel, gamePause, gameOver, gameVictory }
@@ -31,26 +28,6 @@ public class GameManager : Manager<GameManager>
 
     private GameDifficulty difficulty = GameDifficulty.Easy;
 
-    //LIVES
-    #region Lives
-    [Header("GameManager")]
-	[SerializeField]
-	private int m_NStartLives;
-
-	private int m_NLives;
-	public int NLives { get { return m_NLives; } }
-	void DecrementNLives(int decrement)
-	{
-		SetNLives(m_NLives - decrement);
-	}
-
-	void SetNLives(int nLives)
-	{
-		m_NLives = nLives;
-		EventManager.Instance.Raise(new GameStatisticsChangedEvent() { eBestScore = BestScore, eScore = m_Score, eNLives = m_NLives});
-	}
-	#endregion
-
 
 	#region Score
 	private float m_Score;
@@ -60,18 +37,9 @@ public class GameManager : Manager<GameManager>
 		set
 		{
 			m_Score = value;
-			BestScore = Mathf.Max(BestScore, value);
 		}
 	}
-
-
-
-	public float BestScore
-	{
-		get { return PlayerPrefs.GetFloat("BEST_SCORE", 0); }
-		set { PlayerPrefs.SetFloat("BEST_SCORE", value); }
-	}
-
+   
 	void IncrementScore(float increment)
 	{
 		SetScore(m_Score + increment);
@@ -81,9 +49,6 @@ public class GameManager : Manager<GameManager>
 	{
 		Score = score;
         if (SfxManager.Instance) SfxManager.Instance.PlaySfx2D(Constants.SCORE_SFX);
-
-        if (raiseEvent)
-			EventManager.Instance.Raise(new GameStatisticsChangedEvent() { eBestScore = BestScore, eScore = m_Score, eNLives = m_NLives });
 	}
 	#endregion
 
@@ -163,9 +128,7 @@ public class GameManager : Manager<GameManager>
 
     public void SetDifficulty(DifficultyValueEvent e)
     {
-        Debug.Log(e.difficulty);
         difficulty = e.difficulty;
-
     }
     #endregion
 
@@ -238,17 +201,19 @@ public class GameManager : Manager<GameManager>
 		InitNewGame();
         MapManager.Instance.setEnnemies((int)difficulty + 1);
         SetTimeScale(1);
-		m_GameState = GameState.gamePlay;
+		
 		mainMenuPanel.SetActive(false);
 		HUDPanel.SetActive(true);
+        
 
 
-		Cursor.lockState = CursorLockMode.Locked;
+        Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
 
 		if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.GAMEPLAY_MUSIC);
 		EventManager.Instance.Raise(new GamePlayEvent());
-	}
+        m_GameState = GameState.gamePlay;
+    }
 
 	private void Pause()
 	{
