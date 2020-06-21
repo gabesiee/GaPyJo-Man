@@ -1479,7 +1479,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "La folle Aventures de Gabriel contre les fant\xF4mes de Pierre Yves dans
+  m_Text: "La folle aventure de Gabriel contre les fant\xF4mes de Pierre-Yves dans
     l'univers de Joseph le Magicien"
 --- !u!222 &566415055
 CanvasRenderer:
