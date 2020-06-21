@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using SDD.Events;
+using UnityEngine.UIElements;
 
 public class MenuManager : Manager<MenuManager>
 {
@@ -102,13 +103,25 @@ public class MenuManager : Manager<MenuManager>
 	{
 		EventManager.Instance.Raise(new CreditsButtonClickedEvent());
 	}
+    public void DifficultySliderChanged(float difficulty)
+    {
+        DifficultyValueEvent diff = new DifficultyValueEvent();
+        diff.difficulty = (GameDifficulty)difficulty - 1;
+        EventManager.Instance.Raise(diff);
+    }
 
-	#endregion
+    public void EditDifficultyText(DifficultyValueEvent e) {
 
-	#region Callbacks to GameManager events
-	protected override void GameMenu(GameMenuEvent e)
+    }
+
+    #endregion
+
+    #region Callbacks to GameManager events
+    protected override void GameMenu(GameMenuEvent e)
 	{
-		OpenPanel(m_PanelMainMenu);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(m_PanelMainMenu.transform.GetChild(2).gameObject);
+
+        OpenPanel(m_PanelMainMenu);
 	}
 
 	protected override void GamePlay(GamePlayEvent e)
@@ -118,7 +131,8 @@ public class MenuManager : Manager<MenuManager>
 
 	protected override void GamePause(GamePauseEvent e)
 	{
-		OpenPanel(m_PanelInGameMenu);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(m_PanelInGameMenu.transform.GetChild(0).gameObject);
+        OpenPanel(m_PanelInGameMenu);
 	}
 
 	protected override void GameResume(GameResumeEvent e)
@@ -128,7 +142,16 @@ public class MenuManager : Manager<MenuManager>
 
 	protected override void GameOver(GameOverEvent e)
 	{
-		OpenPanel(m_PanelGameOver);
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(m_PanelGameOver.transform.GetChild(1).gameObject);
+        OpenPanel(m_PanelGameOver);
 	}
-	#endregion
+
+    protected override void GameCredit(GameCreditEvent e)
+    {
+        UnityEngine.EventSystems.EventSystem.current.SetSelectedGameObject(m_PanelCredits.transform.GetChild(1).gameObject);
+        OpenPanel(m_PanelCredits);
+    }
+
+
+    #endregion
 }

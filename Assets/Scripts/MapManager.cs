@@ -1,9 +1,5 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
-using Unity.UNetWeaver;
 using UnityEngine;
-using UnityEngine.SocialPlatforms.Impl;
-using UnityEngine.UI;
 
 public class MapManager : Manager<MapManager>
 {
@@ -12,8 +8,8 @@ public class MapManager : Manager<MapManager>
     private Texture2D map;                              // variable qui va recevoir la map à générer
     [SerializeField] private GameObject wall;           // l'objet mur
     [SerializeField] private GameObject ground;         // l'objet sol
-    [SerializeField] private GameObject ceiling;        // l'objet plafond
     [SerializeField] private GameObject book;           // l'objet livre
+    [SerializeField] private GameObject ennemy;           // Objet ennemi
     private Vector3[,] mapPath;                         // carte représentant le terrain
 
     private void Awake()
@@ -71,6 +67,15 @@ public class MapManager : Manager<MapManager>
             }
 
             counter++;
+        }
+    }
+
+
+    public void setEnnemies(int nbEnnemies)
+    {
+        for (int i = 0; i < nbEnnemies; i++)
+        {
+            Instantiate(ennemy, Vector3.zero, Quaternion.identity);
         }
     }
 

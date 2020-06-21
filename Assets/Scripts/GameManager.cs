@@ -8,6 +8,7 @@ using System.Linq;
 using UnityEngine.SceneManagement;
 
 public enum GameState { gameMenu, gamePlay, gameNextLevel, gamePause, gameOver, gameVictory }
+public enum GameDifficulty { Easy, Normal, Hard, Harder }
 
 public class GameManager : Manager<GameManager>
 {
@@ -24,9 +25,15 @@ public class GameManager : Manager<GameManager>
 	public GameObject creditsPanel;
 	public Text scoreText;
 
-	//LIVES
-	#region Lives
-	[Header("GameManager")]
+
+
+
+
+    private GameDifficulty difficulty = GameDifficulty.Easy;
+
+    //LIVES
+    #region Lives
+    [Header("GameManager")]
 	[SerializeField]
 	private int m_NStartLives;
 
@@ -104,9 +111,10 @@ public class GameManager : Manager<GameManager>
 		EventManager.Instance.AddListener<EscapeButtonClickedEvent>(EscapeButtonClicked);
 		EventManager.Instance.AddListener<QuitButtonClickedEvent>(QuitButtonClicked);
 		EventManager.Instance.AddListener<CreditsButtonClickedEvent>(CreditsButtonClicked);
+        EventManager.Instance.AddListener<DifficultyValueEvent>(SetDifficulty);
 
-		//Score Item
-		EventManager.Instance.AddListener<ScoreItemEvent>(ScoreHasBeenGained);
+        //Score Item
+        EventManager.Instance.AddListener<ScoreItemEvent>(ScoreHasBeenGained);
 
 
 		EventManager.Instance.AddListener<GameMusicEvent>(toggleMusic);
@@ -127,9 +135,10 @@ public class GameManager : Manager<GameManager>
 		EventManager.Instance.RemoveListener<EscapeButtonClickedEvent>(EscapeButtonClicked);
 		EventManager.Instance.RemoveListener<QuitButtonClickedEvent>(QuitButtonClicked);
 		EventManager.Instance.RemoveListener<CreditsButtonClickedEvent>(CreditsButtonClicked);
+        EventManager.Instance.RemoveListener<DifficultyValueEvent>(SetDifficulty);
 
-		//Score Item
-		EventManager.Instance.RemoveListener<ScoreItemEvent>(ScoreHasBeenGained);
+        //Score Item
+        EventManager.Instance.RemoveListener<ScoreItemEvent>(ScoreHasBeenGained);
 
 
 		EventManager.Instance.RemoveListener<GameMusicEvent>(toggleMusic);
@@ -152,6 +161,12 @@ public class GameManager : Manager<GameManager>
 		SetScore(0);
 	}
 
+    public void SetDifficulty(DifficultyValueEvent e)
+    {
+        Debug.Log(e.difficulty);
+        difficulty = e.difficulty;
+
+    }
     #endregion
 
     #region Callbacks to events issued by Score items
@@ -221,10 +236,12 @@ public class GameManager : Manager<GameManager>
 	private void Play()
 	{
 		InitNewGame();
-		SetTimeScale(1);
+        MapManager.Instance.setEnnemies((int)difficulty + 1);
+        SetTimeScale(1);
 		m_GameState = GameState.gamePlay;
 		mainMenuPanel.SetActive(false);
 		HUDPanel.SetActive(true);
+
 
 		Cursor.lockState = CursorLockMode.Locked;
 		Cursor.visible = false;
@@ -324,8 +341,8 @@ public class GameManager : Manager<GameManager>
 		creditsPanel.SetActive(true);
 		mainMenuPanel.SetActive(false);
 
-		if (MusicLoopsManager.Instance) MusicLoopsManager.Instance.PlayMusic(Constants.MENU_MUSIC);
-		EventManager.Instance.Raise(new GameMenuEvent());
+		
+		EventManager.Instance.Raise(new GameCreditEvent());
 	}
 
     #endregion

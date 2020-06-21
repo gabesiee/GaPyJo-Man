@@ -98,8 +98,7 @@ public class Ennemy : MonoBehaviour
         light = GetComponentInChildren<Light>();
 
         m_RigidBody = GetComponent<Rigidbody>();
-
-
+        
     }
 
     /**
@@ -360,17 +359,13 @@ public class Ennemy : MonoBehaviour
         int wallsMask = 1 << 9;
 
         //Recupere le collider du joueur
-        Collider[] playerCollider = Physics.OverlapSphere(transform.position, 1000, playerMask);
+        Collider[] playerCollider = Physics.OverlapSphere(transform.position, Mathf.Infinity, playerMask);
 
         //calcul des vecteurs direction et de la distance entre l'ennemi et le joueur
         Vector3 position = new Vector3(transform.position.x, 1, transform.position.z);
         Transform player = playerCollider[0].transform;
         Vector3 direction = (player.position - position).normalized;
         float distance = Vector3.Distance(player.position, position);
-
-        Debug.DrawRay(position, direction * distance, Color.red);
-        Debug.DrawRay(position, transform.forward * 10000, Color.yellow);
-
 
         RaycastHit hit;
         // Check si le joeur est visible par l'ennemi (à 360deg)

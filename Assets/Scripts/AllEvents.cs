@@ -23,6 +23,11 @@ public class GameVictoryEvent : SDD.Events.Event
 {
 }
 
+public class GameCreditEvent : SDD.Events.Event
+{
+}
+
+
 public class GameMusicEvent : SDD.Events.Event
 {
     public int type;
@@ -58,6 +63,11 @@ public class PlayerHasBeenHitEvent : SDD.Events.Event
 
 public class CreditsButtonClickedEvent : SDD.Events.Event
 { }
+
+public class DifficultyValueEvent : SDD.Events.Event
+{
+    public GameDifficulty difficulty;
+}
 #endregion
 
 #region Score Event
